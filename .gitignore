@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.env
+.env.local
+*.tsbuildinfo
+.sites-runtime/
+
+.env.*
+!.env.example
+.openai/
+*.log
+.DS_Store
+
