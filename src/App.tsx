@@ -155,7 +155,7 @@ function Shell() {
               );
             })}
           </nav>
-          {themeToggle}
+          <Link className="back-to-site" to="/">← <span>Back to website</span></Link>{themeToggle}
           <Link to="/learn/profile" className="learner-user">
             <Avatar name="Maya Lin" />
             <span>
@@ -238,7 +238,7 @@ function Shell() {
               <b>{label}</b>
             </div>
             <div className="top-actions">
-              {themeToggle}
+              <Link className="back-to-site" to="/">← <span>Back to website</span></Link>{themeToggle}
               <span className="demo-label">DEMO WORKSPACE</span>
               <button
                 className="icon-btn"
@@ -370,3 +370,4 @@ export default function App() {
     </StoreProvider>
   );
 }
+

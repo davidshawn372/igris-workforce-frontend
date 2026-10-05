@@ -215,3 +215,8 @@
 :is(.app-shell,.learner-app) .brief-actions { background:var(--surface); }
 .theme-light .brief-actions b { color:#33415f; }
 
+
+.back-to-site { display:inline-flex; align-items:center; gap:7px; white-space:nowrap; color:var(--ink); font-size:12px; font-weight:600; padding:8px 10px; border:1px solid var(--line); border-radius:8px; }
+.back-to-site:hover { background:rgba(110,115,220,.12); }
+@media(max-width:600px) { .topbar { flex-wrap:wrap; gap:10px; height:auto; min-height:72px; padding-block:12px; } .top-actions { gap:8px; } .top-actions .demo-label { display:none; } }
+
