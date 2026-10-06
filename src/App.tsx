@@ -1,3 +1,4 @@
+import { Billing, PlanProvider, ProGate } from "./billing";
 import { Landing } from "./Landing";
 import { useEffect, useState } from "react";
 import {
@@ -52,6 +53,7 @@ const navigation = [
   { icon: GitBranch, label: "Onboarding", path: "/onboarding" },
   { icon: Library, label: "Knowledge", path: "/knowledge" },
   { icon: ChartNoAxesCombined, label: "Insights", path: "/insights" },
+  { icon: CircleCheck, label: "Plans", path: "/billing" },
 ];
 function Shell() {
   const { data, toast } = useStore();
@@ -297,7 +299,8 @@ function Shell() {
             <Route path="/onboarding" element={<Flows />} />
             <Route path="/onboarding/:id" element={<FlowBuilder />} />
             <Route path="/knowledge" element={<Knowledge />} />
-            <Route path="/insights" element={<Insights />} />
+            <Route path="/insights" element={<ProGate><Insights /></ProGate>} />
+<Route path="/billing" element={<Billing />} />
             <Route path="/settings" element={<SettingsPage />} />
             <Route path="/learn" element={<LearnerHome />} />
             <Route path="/learn/journey" element={<Journey />} />
@@ -366,8 +369,9 @@ function Shell() {
 export default function App() {
   return (
     <StoreProvider key="igris-branded-workspace">
-      <Shell />
+      <PlanProvider><Shell /></PlanProvider>
     </StoreProvider>
   );
 }
+
 

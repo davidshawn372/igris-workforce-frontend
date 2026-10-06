@@ -13,7 +13,7 @@ export function Landing() {
       <div className="compute-grid" aria-hidden="true" />
       <header className="compute-nav">
         <Link to="/" className="compute-brand"><img src="/igris-logo.png" alt="" />IGRIS <sup>WORKFORCE</sup></Link>
-        <nav aria-label="Product navigation"><a href="#platform">Platform</a><a href="#process">How it works</a><a href="#experiences">Experiences</a><a href="#knowledge">Knowledge</a></nav>
+        <nav aria-label="Product navigation"><a href="#platform">Platform</a><a href="#process">How it works</a><a href="#experiences">Experiences</a><a href="#knowledge">Knowledge</a><Link to="/billing">Pricing</Link></nav>
         <Link to="/workspace" className="compute-signin">Workspace <ArrowUpRight size={14}/></Link>
         <Link to="/learn" className="compute-button">Explore onboarding</Link>
       </header>
@@ -40,3 +40,4 @@ export function Landing() {
     <footer className="compute-footer"><Link to="/" className="compute-brand">IGRIS <sup>WORKFORCE</sup></Link><p>Good beginnings. Better teams.</p><a href="#platform">Back to platform ↑</a><span>© {new Date().getFullYear()} IGRIS Technologies</span></footer>
   </div>;
 }
+
