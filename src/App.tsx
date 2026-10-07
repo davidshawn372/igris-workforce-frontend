@@ -23,7 +23,6 @@ import {
   ChevronRight,
   ArrowUpRight,
   GraduationCap,
-  PanelLeftClose,
   Menu,
   Sun,
   Moon,
@@ -60,14 +59,31 @@ function Shell() {
   const location = useLocation();
   const navigate = useNavigate();
   const [light, setLight] = useState(() => {
-    try { return localStorage.getItem("igris-theme") === "light"; } catch { return false; }
+    try {
+      return localStorage.getItem("igris-theme") === "light";
+    } catch {
+      return false;
+    }
   });
   function toggleTheme() {
     const next = !light;
     setLight(next);
-    try { localStorage.setItem("igris-theme", next ? "light" : "dark"); } catch { /* Theme still works when browser storage is unavailable. */ }
+    try {
+      localStorage.setItem("igris-theme", next ? "light" : "dark");
+    } catch {
+      /* Theme still works when browser storage is unavailable. */
+    }
   }
-  const themeToggle = <button className="icon-btn theme-toggle" onClick={toggleTheme} aria-label={light ? "Switch to dark mode" : "Switch to light mode"} title={light ? "Dark mode" : "Light mode"}>{light ? <Moon size={18} /> : <Sun size={18} />}</button>;
+  const themeToggle = (
+    <button
+      className="icon-btn theme-toggle"
+      onClick={toggleTheme}
+      aria-label={light ? "Switch to dark mode" : "Switch to light mode"}
+      title={light ? "Dark mode" : "Light mode"}
+    >
+      {light ? <Moon size={18} /> : <Sun size={18} />}
+    </button>
+  );
   const [mobile, setMobile] = useState(false);
   const [search, setSearch] = useState(false);
   const [query, setQuery] = useState("");
@@ -79,14 +95,28 @@ function Shell() {
       ? location.pathname === "/"
       : location.pathname.startsWith(x.path),
   );
-  const label = location.pathname === "/" ? "Welcome" : learner
-    ? "Employee portal"
-    : current?.label || "Workspace settings";
+  const label =
+    location.pathname === "/"
+      ? "Welcome"
+      : learner
+        ? "Employee portal"
+        : current?.label || "Workspace settings";
   useEffect(() => {
     setMobile(false);
     window.scrollTo(0, 0);
     document.title = label + " · IGRIS Workforce";
   }, [location.pathname, label]);
+  useEffect(() => {
+    if (!mobile) return;
+    document.querySelector<HTMLButtonElement>('.navigation-close')?.focus();
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key !== 'Escape') return;
+      setMobile(false);
+      document.querySelector<HTMLButtonElement>('.navigation-trigger')?.focus();
+    };
+    window.addEventListener('keydown', closeOnEscape);
+    return () => window.removeEventListener('keydown', closeOnEscape);
+  }, [mobile]);
   useEffect(() => {
     const fn = (e: KeyboardEvent) => {
       if ((e.ctrlKey || e.metaKey) && e.key === "k") {
@@ -130,7 +160,11 @@ function Shell() {
   ).length;
   if (location.pathname === "/") return <Landing />;
   return (
-    <div className={(learner ? "learner-app" : "app-shell") + (light ? " theme-light" : "")}>
+    <div
+      className={
+        (learner ? "learner-app" : "app-shell") + (light ? " theme-light" : "")
+      }
+    >
       <a className="skip-link" href="#main-content">
         Skip to content
       </a>
@@ -157,7 +191,10 @@ function Shell() {
               );
             })}
           </nav>
-          <Link className="back-to-site" to="/">← <span>Back to website</span></Link>{themeToggle}
+          <Link className="back-to-site" to="/">
+            ← <span>Back to website</span>
+          </Link>
+          {themeToggle}
           <Link to="/learn/profile" className="learner-user">
             <Avatar name="Maya Lin" />
             <span>
@@ -175,7 +212,8 @@ function Shell() {
             className={"mobile-shade " + (mobile ? "visible" : "")}
             onClick={() => setMobile(false)}
           />
-          <aside className={"sidebar " + (mobile ? "open" : "")}>
+          <aside id="workspace-navigation" className={"sidebar " + (mobile ? "open" : "")}>
+            <button className="menu-toggle navigation-close" onClick={() => { setMobile(false); document.querySelector<HTMLButtonElement>('.navigation-trigger')?.focus(); }} aria-label="Close navigation"><X size={20} />Close menu</button>
             <Brand />
             <button className="workspace" onClick={() => navigate("/settings")}>
               <span className="company-icon">{data.company.slice(0, 1)}</span>
@@ -188,7 +226,13 @@ function Shell() {
             <div className="nav-label">WORKSPACE</div>
             <nav>
               {navigation.map(({ icon: Icon, label, path }) => (
-                <NavLink key={path} end={path === "/"} to={path} aria-label={label} title={label}>
+                <NavLink
+                  key={path}
+                  end={path === "/"}
+                  to={path}
+                  aria-label={label}
+                  title={label}
+                >
                   <Icon size={19} />
                   <span className="nav-text">{label}</span>
                   {label === "Onboarding" && (
@@ -228,19 +272,24 @@ function Shell() {
           <header className="topbar">
             <div className="crumb">
               <button
-                className="icon-btn menu-toggle"
+                className="menu-toggle navigation-trigger"
                 onClick={() => setMobile(!mobile)}
-                aria-label="Open navigation"
+                aria-label={mobile ? "Close navigation menu" : "Open navigation menu"}
+                aria-expanded={mobile}
+                aria-controls="workspace-navigation"
               >
                 <Menu size={20} />
+                <span>Menu</span>
               </button>
-              <PanelLeftClose className="desktop-icon" size={18} />
-              <span>Workspace</span>
+              <span className="crumb-parent">Workspace</span>
               <ChevronRight size={13} />
               <b>{label}</b>
             </div>
             <div className="top-actions">
-              <Link className="back-to-site" to="/">← <span>Back to website</span></Link>{themeToggle}
+              <Link className="back-to-site" to="/">
+                ← <span>Back to website</span>
+              </Link>
+              {themeToggle}
               <span className="demo-label">DEMO WORKSPACE</span>
               <button
                 className="icon-btn"
@@ -289,7 +338,11 @@ function Shell() {
             )}
           </header>
         )}
-        <main key={location.pathname} id="main-content" className={learner ? "learner-page" : "page"}>
+        <main
+          key={location.pathname}
+          id="main-content"
+          className={learner ? "learner-page" : "page"}
+        >
           <Routes>
             <Route path="/workspace" element={<Overview />} />
             <Route path="/people" element={<People />} />
@@ -299,8 +352,15 @@ function Shell() {
             <Route path="/onboarding" element={<Flows />} />
             <Route path="/onboarding/:id" element={<FlowBuilder />} />
             <Route path="/knowledge" element={<Knowledge />} />
-            <Route path="/insights" element={<ProGate><Insights /></ProGate>} />
-<Route path="/billing" element={<Billing />} />
+            <Route
+              path="/insights"
+              element={
+                <ProGate>
+                  <Insights />
+                </ProGate>
+              }
+            />
+            <Route path="/billing" element={<Billing />} />
             <Route path="/settings" element={<SettingsPage />} />
             <Route path="/learn" element={<LearnerHome />} />
             <Route path="/learn/journey" element={<Journey />} />
@@ -369,9 +429,9 @@ function Shell() {
 export default function App() {
   return (
     <StoreProvider key="igris-branded-workspace">
-      <PlanProvider><Shell /></PlanProvider>
+      <PlanProvider>
+        <Shell />
+      </PlanProvider>
     </StoreProvider>
   );
 }
-
-
