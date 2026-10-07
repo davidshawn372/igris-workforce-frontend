@@ -38,3 +38,7 @@ Generated stock-style photography has been removed from the interface. The redes
 
 The public landing page is at /, the company dashboard at /workspace, and the employee portal at /learn. Dark mode is the default; the header toggle stores an optional light preference locally. src/workspace-theme.css owns the current application theme; src/landing.css styles the homepage. See DESIGN.md for external hero asset provenance.
 
+
+## Guides and Pro demo
+
+Current proposed monthly workspace plans: Free (5 employees, 1 published journey), Starter $7.99 (15 employees, 5 journeys), Team $16 (50 employees, 20 journeys), Business $39 (150 employees, 20 journeys), and Enterprise custom pricing above 150 employees. Paid demos include reporting and exports. Existing over-limit records are preserved; new employee additions and journey publications are limited. See docs/PLAN-LIMITS.md (or PLAN-LIMITS.md from this directory) for details. These are frontend demos, not secure subscriptions or verified production capacity.

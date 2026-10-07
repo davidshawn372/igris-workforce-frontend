@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { usePlan } from './plan-context';
+import { capacityMessage } from './plans';
 import { Link, useSearchParams } from "react-router-dom";
 import {
   Plus,
@@ -35,6 +37,7 @@ export function InviteForm({
   onClose: () => void;
 }) {
   const { data, setData, notify } = useStore();
+  const { plan } = usePlan();
   return (
     <Modal title="A new beginning" open={open} onClose={onClose}>
       <p className="form-intro">
@@ -44,6 +47,8 @@ export function InviteForm({
         className="form"
         onSubmit={(e) => {
           e.preventDefault();
+          const limit = capacityMessage(plan, 'employees', data.employees.length);
+          if (limit) { notify(limit); return; }
           const d = new FormData(e.currentTarget);
           const name = String(d.get("name")).trim();
           const email = String(d.get("email")).trim();

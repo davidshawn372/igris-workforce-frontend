@@ -22,11 +22,11 @@ Run `npm ci`, `npm run dev`, and `npm run build` with Node 22+. Configure SPA ho
 - `/learn`: assigned learning path; lessons, checklist steps, quizzes, scenarios, resources and profile.
 - `/learn/assistant`: scripted document matching, not generative AI.
 - `/insights`: Pro department completion and journey-stage analytics; CSV progress export.
-- `/billing`: Free/Pro comparison and a no-payment Pro demo switch.
+- `/billing`: Free, Starter, Team, Business and custom Enterprise comparison with no-payment demo switches.
 - `/settings`: editable workspace configuration and demo reset.
 
 ## Paid plan decision
-Pro is proposed at USD $7.99 per workspace per month, not per employee. Paid features are department comparison, journey-stage analytics and downloadable progress reports. Basic employee progress, learning and onboarding remain free. Existing basic people-list export stays free; the Pro export contains learning-completion details.
+Current proposed monthly workspace plans: Free (5 employees, 1 published journey), Starter $7.99 (15 employees, 5 journeys), Team $16 (50 employees, 20 journeys), Business $39 (150 employees, 20 journeys), and Enterprise custom pricing above 150 employees. Paid demos include reporting and exports. Existing over-limit records are preserved; new employee additions and journey publications are limited. See docs/PLAN-LIMITS.md (or PLAN-LIMITS.md from this directory) for details. These are frontend demos, not secure subscriptions or verified production capacity.
 
 `src/billing.tsx` uses a session-only React context to demonstrate entitlement. Anyone can bypass frontend-only restrictions: this is intentional demo code, not billing security. Refresh resets Pro to Free. Demo activation never creates a subscription or collects a card.
 

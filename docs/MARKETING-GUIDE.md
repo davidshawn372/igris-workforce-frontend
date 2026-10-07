@@ -14,7 +14,7 @@ Start with small growing companies, founders handling onboarding themselves, and
 - Pro reporting compares teams and exports completion data.
 
 ## Price story
-Core onboarding and employee learning stay free. Proposed Pro pricing is $7.99 USD per workspace per month for department comparisons, journey-stage analytics and completion reports. This is a simple starting offer to test, not evidence of profitability. Real billing has not been connected. Avoid selling unlimited AI usage at this price until service costs are understood.
+Current proposed monthly workspace plans: Free (5 employees, 1 published journey), Starter $7.99 (15 employees, 5 journeys), Team $16 (50 employees, 20 journeys), Business $39 (150 employees, 20 journeys), and Enterprise custom pricing above 150 employees. Paid demos include reporting and exports. Existing over-limit records are preserved; new employee additions and journey publications are limited. See docs/PLAN-LIMITS.md (or PLAN-LIMITS.md from this directory) for details. These are frontend demos, not secure subscriptions or verified production capacity.
 
 ## Honest promotion
 Present the current build as an interactive frontend demo or early preview. Do not claim real AI automation, paying customers, guaranteed productivity gains, compliance certifications, live integrations or customer testimonials. Sample people and companies are fictional. The reference blossom media needs licensing/replacement before commercial campaigns.
@@ -24,7 +24,7 @@ Present the current build as an interactive frontend demo or early preview. Do n
 2. Show the problem in one sentence, then demonstrate a completed employee task and the manager's updated progress.
 3. Post the walkthrough where founders and people-operations practitioners already discuss onboarding; tailor the message to the community.
 4. Invite interested teams to a short feedback call or guided demo. Do not imply a signup form or public service exists before it does.
-5. Ask what their current onboarding process costs in time, where new hires get stuck, and whether manager reporting is worth $7.99 monthly.
+5. Ask which employee capacity and onboarding tools a business needs, and test willingness to pay for the appropriate plan.
 6. Track demo-to-conversation conversion, first journey created, first assignment and first completed lesson. Measure retention after the backend exists.
 
 ## Copy you can use

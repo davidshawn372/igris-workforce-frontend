@@ -350,9 +350,12 @@ export function Flows() {
     </>
   );
 }
+import { usePlan } from './plan-context';
+import { capacityMessage } from './plans';
 export function FlowBuilder() {
   const { id } = useParams();
   const { data, setData, notify } = useStore();
+  const { plan } = usePlan();
   const flow = data.flows.find((f) => f.id === id);
   const [selected, setSelected] = useState("");
   const [remove, setRemove] = useState("");
@@ -397,6 +400,8 @@ export function FlowBuilder() {
           className="btn primary"
           disabled={!flow.modules.length}
           onClick={() => {
+            const limit = capacityMessage(plan, 'journeys', data.flows.filter(f => f.published).length);
+            if (!flow.published && limit) { notify(limit); return; }
             update({ published: !flow.published });
             notify(
               flow.published

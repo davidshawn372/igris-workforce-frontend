@@ -16,9 +16,9 @@ IGRIS gives new employees a clear place to start. Instead of searching through s
 Open the employee portal, review your assigned path, and choose a lesson. Complete checklist items or answer a quiz, then mark eligible lessons complete. Progress appears in the manager workspace too. The assistant demonstrates finding answers in sample company documents; it is not a live AI service. Your profile and resource pages keep useful information close.
 
 ## Free and Pro
-The free experience includes core onboarding, employee learning, company knowledge and basic progress. Pro is proposed at $7.99 USD per company workspace per month for manager analytics and downloadable learning progress reports. Employees do not pay separately.
+Current proposed monthly workspace plans: Free (5 employees, 1 published journey), Starter $7.99 (15 employees, 5 journeys), Team $16 (50 employees, 20 journeys), Business $39 (150 employees, 20 journeys), and Enterprise custom pricing above 150 employees. Paid demos include reporting and exports. Existing over-limit records are preserved; new employee additions and journey publications are limited. See docs/PLAN-LIMITS.md (or PLAN-LIMITS.md from this directory) for details. These are frontend demos, not secure subscriptions or verified production capacity.
 
-The Plans screen currently offers a clearly marked Pro demo. It does not charge money, ask for payment details or create a subscription. End the demo on Plans, or refresh the page, to return to Free. Your onboarding data is kept.
+The Plans screen offers clearly marked, session-only plan demos. No money is charged. Choose Free or refresh to return to Free; saved data is retained. Manager seat enforcement and real subscriptions require the backend.
 
 ## Finding your way
 The labelled sidebar opens each company page. The header's Back to website link returns to the landing page, and the IGRIS logo remains clickable. Use the sun/moon button for the optional light theme; dark is the default. Search and filters help narrow lists.

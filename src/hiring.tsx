@@ -312,8 +312,11 @@ export function JobEditor() {
     </>
   );
 }
+import { usePlan } from './plan-context';
+import { capacityMessage } from './plans';
 export function CandidateDetail() {
   const { id } = useParams();
+  const { plan } = usePlan();
   const { data, setData, notify } = useStore();
   const candidate = data.candidates.find((c) => c.id === id);
   const [hire, setHire] = useState(false);
@@ -466,6 +469,8 @@ export function CandidateDetail() {
           <button
             className="btn primary"
             onClick={() => {
+              const limit = capacityMessage(plan, 'employees', data.employees.length);
+              if (limit) { notify(limit); return; }
               setData((s) => ({
                 ...s,
                 candidates: s.candidates.map((c) =>
